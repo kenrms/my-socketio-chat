@@ -8,15 +8,19 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket){
-    console.log('a user connected');
+    let name = socket.handshake.query.name;
+    console.log('a user connected: ' + name);
+    io.emit('chat_update', name + ' has connected');
 
     socket.on('chat message', function(msg){
+        msg = name + ': ' + msg;
         console.log('message: ' + msg);
         io.emit('chat message', msg);
     });
 
     socket.on('disconnect', function() {
-        console.log('user disconnected');
+        console.log('user disconnected: ' + name);
+        io.emit('chat_update' , name + ' has disconnected');
     });
 });
 
