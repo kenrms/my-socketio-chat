@@ -2,7 +2,7 @@
   "name": "mychat",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.15.4",
     "node-xmpp": "^1.1.0",
